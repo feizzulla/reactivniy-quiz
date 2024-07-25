@@ -1,4 +1,4 @@
-export default function Button({ text, type = 'button', color = 'blue', disabled = false, show = true, onClick, id }) {
+export default function Button({ text, type = 'button', color = 'blue', disabled = false, show = true, onClick, onMouseDown , id }) {
   const buttonStyles = {
     backgroundColor: color,
     color: "white",
@@ -7,5 +7,5 @@ export default function Button({ text, type = 'button', color = 'blue', disabled
     padding: "5px 15px"
   };
 
-  return <button type={type} style={buttonStyles} disabled={disabled} onClick={onClick} id={id}>{text}</button>;
+  return <button type={type} style={buttonStyles} disabled={disabled} onClick={onClick} onMouseDown={onMouseDown} id={id}>{text}</button>;
 }
