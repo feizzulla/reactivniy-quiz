@@ -6,7 +6,7 @@ export default function MainPage() {
 
   return (
     <div className="mainPage">
-      <div className="quiz">
+      <div className="theme">
         Выбери тему:
         {theme.map((el, index) => (
           <CardTheme key = {index} el={el}/>
