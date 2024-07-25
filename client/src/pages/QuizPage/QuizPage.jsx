@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import CardQuiz from "../../components/CardQuiz/CardQuiz";
 import tempFile from "../../../TEMP/quiz.json";
+import Button from "../../components/Button/Button";
+import { Link } from "react-router-dom";
 
 export default function QuizPage() {
   const params = useParams();
@@ -11,16 +13,27 @@ export default function QuizPage() {
 
   function newQuestionHandler() {
     setTimeout(() => {
-    setIndex((n) => n + 1);
-    },1000)
+      setIndex((n) => n + 1);
+    }, 2000);
   }
 
-  return (
-    <div className="quizPage">
-      <div className="quiz">
-        Выбери тему:
-        <CardQuiz key={index} el={quiz.filter((el) => el.id === `${index}`)[0]} newQuestion={() => newQuestionHandler()} />
+  if (index <= quiz.length) {
+    return (
+      <div className="quizPage">
+        <div className="quiz">
+          Выбери тему:
+          <CardQuiz key={index} el={quiz.filter((el) => el.id === `${index}`)[0]} newQuestion={() => newQuestionHandler()} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div>
+        Квиз окончен!
+        <Link to={`/`}>
+          <Button text={"Вернуться"} />
+        </Link>
+      </div>
+    );
+  }
 }
