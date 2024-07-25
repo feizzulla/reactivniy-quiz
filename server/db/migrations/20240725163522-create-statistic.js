@@ -11,11 +11,11 @@ module.exports = {
       },
       answers: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       wronganswers: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       userId: {
         allowNull: false,

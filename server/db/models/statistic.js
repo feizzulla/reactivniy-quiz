@@ -13,8 +13,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Statistic.init(
     {
-      answers: DataTypes.STRING,
-      wronganswers: DataTypes.STRING,
+      answers: DataTypes.INTEGER,
+      wronganswers: DataTypes.INTEGER,
       userId: DataTypes.INTEGER,
     },
     {
