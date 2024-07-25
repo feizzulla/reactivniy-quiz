@@ -1,4 +1,5 @@
 require("dotenv").config();
+
 const axios = require("axios");
 const openaiApiKey = process.env.OPENAI_API_KEY;
 
@@ -18,24 +19,23 @@ async function checkAnswer(req, res, next) {
           {
             role: "system",
             content:
-              "Вы полезный помощник, который создает вопросы для викторины.",
+              "Вы полезный помощник, который проверяет ответы на викторины.",
           },
           {
             role: "user",
-            content: `Создайте 2 коротких и несложных вопросов викторины по теме: ${theme}`,
+            content: `Вопрос: ${question}\nОтвет пользователя: ${userAnswer}\nПравильный ответ: ${correctAnswer}\nЭто правильный ответ? Ответь "true" или "false".`,
           },
         ],
-        max_tokens: 1000,
+        max_tokens: 5,
         n: 1,
         stop: null,
-        temperature: 0.7,
+        temperature: 0.0,
       },
       {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${openaiApiKey}`,
         },
-        timeout: 10000,
       }
     );
 
