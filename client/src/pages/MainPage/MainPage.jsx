@@ -9,7 +9,7 @@ export default function MainPage() {
       <div className="theme">
         Выбери тему:
         {theme.map((el, index) => (
-          <CardTheme key = {index} el={el}/>
+          <CardTheme key={index} el={el} />
         ))}
       </div>
     </div>

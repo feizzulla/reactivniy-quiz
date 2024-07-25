@@ -1,38 +1,37 @@
-import './App.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import MainPage from './pages/MainPage/MainPage';
-import EnterPage from './pages/EnterPage/EnterPage';
-import RegisterPage from './pages/RegisterPage/RegisterPage';
-import StatPage from './pages/StatPage/StatPage';
-import QuizPage from './pages/QuizPage/QuizPage';
+import "./App.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MainPage from "./pages/MainPage/MainPage";
+import EnterPage from "./pages/EnterPage/EnterPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import StatPage from "./pages/StatPage/StatPage";
+import QuizPage from "./pages/QuizPage/QuizPage";
 
-import Root from './Root';
-
+import Root from "./Root";
 
 function App() {
   const router = createBrowserRouter([
     {
-      path: '/',
+      path: "/",
       element: <Root />,
       children: [
         {
-          path: '/',
+          path: "/",
           element: <MainPage />,
         },
         {
-          path: '/enter',
+          path: "/enter",
           element: <EnterPage />,
         },
         {
-          path: '/register',
+          path: "/register",
           element: <RegisterPage />,
         },
         {
-          path: '/stat',
+          path: "/stat",
           element: <StatPage />,
         },
         {
-          path: '/quiz/:id',
+          path: "/quiz/:id",
           element: <QuizPage />,
         },
       ],
@@ -43,4 +42,4 @@ function App() {
   // return <MainPage />
 }
 
-export default App
+export default App;

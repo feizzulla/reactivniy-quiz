@@ -2,21 +2,16 @@ import Button from "../Button/Button";
 import { useState } from "react";
 
 export default function CardTheme({ el, newQuestion }) {
-
-  let answer = el.answer
+  let answer = el.answer;
 
   const [response, setResponse] = useState();
 
   const submitHandler = (event) => {
     event.preventDefault();
-    // console.log(event.target.childNodes[1].value);
-    if (event.target.childNodes[1].value === answer){
-      setResponse('green')
-    } else (
-      setResponse('red')
-    )
+    if (event.target.childNodes[1].value === answer) {
+      setResponse("green");
+    } else setResponse("red");
   };
-
 
   return (
     <div>
@@ -25,9 +20,8 @@ export default function CardTheme({ el, newQuestion }) {
       </div>
       <form onSubmit={submitHandler}>
         <div>{el.question}</div>
-        <input name='newAnswer'></input>
-
-        <Button type={'submit'} color={response} text={"ответить"} onClick={newQuestion}/>
+        <input name="newAnswer" autoComplete="off"></input>
+        <Button type={"submit"} color={response} text={"ответить"} onClick={newQuestion} />
       </form>
     </div>
   );
