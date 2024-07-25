@@ -1,0 +1,17 @@
+[
+  {
+    "id": "1",
+    "theme": "Первая",
+    "imageURL": "../../../public/theme/1.jpg"
+  },
+  {
+    "id": "2",
+    "theme": "Втоаря",
+    "imageURL": "../../../public/theme/2.jpg"
+  },
+  {
+    "id": "3",
+    "theme": "Третья",
+    "imageURL": "../../../public/theme/3.jpg"
+  }
+]
