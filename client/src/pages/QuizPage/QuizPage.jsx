@@ -4,10 +4,12 @@ import CardQuiz from "../../components/CardQuiz/CardQuiz";
 import tempFile from "../../../TEMP/quiz.json";
 import Button from "../../components/Button/Button";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function QuizPage() {
   const params = useParams();
-  const quiz = tempFile;
+  // const quiz = tempFile;
+  console.log(params);
 
   const [index, setIndex] = useState(1);
 
@@ -16,6 +18,21 @@ export default function QuizPage() {
       setIndex((n) => n + 1);
     }, 2000);
   }
+
+  //!сделать запросы с сервера
+  const [quiz, setquiz] = useState([]);
+
+  const getTheme = async () => {
+    const response = await axios.get(`${import.meta.env.VITE_API}/theme`);
+    return response.data;
+  };
+
+  useEffect(() => {
+    getTheme().then((data) => setThemes(data));
+  }, []);
+
+//!вот до сюда не рабочий код
+
 
   if (index <= quiz.length) {
     return (
