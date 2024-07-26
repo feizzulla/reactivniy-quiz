@@ -2,12 +2,17 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Button from "../../components/Button/Button";
-import { Link, useNavigate, useNavigation } from "react-router-dom";
+import {
+  passwordValidation,
+  emailValidation,
+} from "../../utils/validation/user.validation";
+import { useNavigate } from "react-router-dom";
 
 export default function RegisterPage() {
   const [users, setUsers] = useState([]);
-  const [okuser, setOkuser] = useState("none");
-  const [okpass, setOkpass] = useState("none");
+  const [checkMail, setcheckMail] = useState("none");
+  const [checkPassword, setcheckPassword] = useState("none");
+  const [hasEmail, sethasEmail] = useState("none");
   const navigate = useNavigate();
 
   const getUsers = async () => {
@@ -19,10 +24,7 @@ export default function RegisterPage() {
     getUsers().then((data) => setUsers(data));
   }, []);
 
-  console.log(users);
-
-  const initialState = { password: "", email: "" };
-  const [inputs, setInputs] = useState(initialState);
+  const [inputs, setInputs] = useState({ name: "", password: "", email: "" });
 
   function changeHandler(event) {
     event.preventDefault();
@@ -32,47 +34,77 @@ export default function RegisterPage() {
     }));
   }
 
-  function submitHandler(event) {
+  async function submitHandler(event) {
+    sethasEmail("none");
+    let isCorrectEmail = false;
+    let isCorrectPassword = false;
     event.preventDefault();
-
-    let user = [];
-    let pass = "";
-    let userID = "";
-    users.forEach((el) => {
-      user.push(el.name);
-    });
-
-    if (user.includes(inputs.email)) {
-      setOkuser("none");
-      pass = users.filter((el) => el.name === inputs.email);
-      userID = users.filter((el) => el.name === inputs.email);
-      // console.log(pass);
+    if (emailValidation(inputs.email)) {
+      setcheckMail("none");
+      isCorrectEmail = true;
     } else {
-      setOkuser("block");
+      setcheckMail("block");
     }
 
-    if (pass[0].password === inputs.password) {
-      setOkpass("none");
-      navigate(`/${userID[0].id}`);
+    if (passwordValidation(inputs.password)) {
+      setcheckPassword("none");
+      isCorrectPassword = true;
     } else {
-      setOkpass("block");
+      setcheckPassword("block");
+    }
+
+    if (isCorrectPassword && isCorrectEmail) {
+      try {
+        
+        await axios.post(`${import.meta.env.VITE_API}/users`, {
+          name: inputs.name,
+          email: inputs.email,
+          password: inputs.password,
+        });
+        navigate(`/`);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      sethasEmail("block");
     }
   }
 
   return (
     <div>
       <form onSubmit={submitHandler}>
-      Введи имя:
-        <input name="name" autoComplete="off" value={inputs.name} />
+        Введи имя:
+        <input
+          name="name"
+          autoComplete="off"
+          value={inputs.name}
+          onChange={changeHandler}
+        />
         Введи почту:
-        <input name="email" autoComplete="off" value={inputs.email} onChange={changeHandler} />
-        <p style={{ display: okuser }}>не правильное имя</p>
+        <input
+          name="email"
+          autoComplete="off"
+          value={inputs.email}
+          onChange={changeHandler}
+        />
+        <p style={{ display: checkMail, color: "red" }}>
+          Неправильный формат почты
+        </p>
+        <p style={{ display: hasEmail, color: "red" }}>
+          Почта уже зарегистрирована
+        </p>
         Введи пароль:
-        <input name="password" autoComplete="off" value={inputs.password} onChange={changeHandler} />
-        <p style={{ display: okpass }}>плохой пароль</p>
-        <Link to={`/register`}>
-          <Button text={"регистрация"} />
-        </Link>
+        <input
+          name="password"
+          autoComplete="off"
+          value={inputs.password}
+          onChange={changeHandler}
+        />
+        <p style={{ display: checkPassword, color: "red" }}>
+          Пароль должен содержать цифры, спец. символы, большую и маленьку букву
+          и быть длинее 6 символов
+        </p>
+        <Button type={"submit"} text={"регистрация"} />
       </form>
     </div>
   );
