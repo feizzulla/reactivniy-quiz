@@ -51,6 +51,7 @@ export default function EnterPage() {
 
     if (pass[0].password === inputs.password) {
       setOkpass("none");
+      localStorage.id = userID[0].id;
       navigate(`/${userID[0].id}`);
     } else {
       setOkpass("block");

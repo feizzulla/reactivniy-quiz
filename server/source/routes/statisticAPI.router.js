@@ -29,4 +29,21 @@ router
     }
   });
 
+router
+  .route("/:id")
+
+  .get(async (req, res) => {
+    const { id: userId } = req.params;
+    try {
+      const userStatistic = await Statistic.findAll({
+        where: { userId },
+        attributes: { exclude: ["createdAt", "updatedAt"] },
+      });
+      res.status(200).json(userStatistic);
+    } catch (error) {
+      console.log(`${error}`);
+      res.status(400).json(error);
+    }
+  });
+
 module.exports = router;
