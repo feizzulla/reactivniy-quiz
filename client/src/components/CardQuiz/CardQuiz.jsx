@@ -16,7 +16,7 @@ export default function CardTheme({ el, newQuestion }) {
   return (
     <div>
       <div>
-        <img style={{ weidth: "60px", height: "60px" }} src={el.imageURL} alt={el.theme} />
+        <img style={{ weidth: "60px", height: "60px" }} src={el.imageurl} alt={el.theme} />
       </div>
       <form onSubmit={submitHandler}>
         <div>{el.question}</div>
