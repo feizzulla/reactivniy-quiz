@@ -26,7 +26,6 @@ export default function QuizPage() {
 
   useEffect(() => {
     getQuestion().then((data) => {
-      console.log("!!!!33!!!!", data);
       setQuests(data);
     });
   }, []);
