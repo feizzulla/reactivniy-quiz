@@ -55,18 +55,16 @@ export default function RegisterPage() {
 
     if (isCorrectPassword && isCorrectEmail) {
       try {
-        
-        await axios.post(`${import.meta.env.VITE_API}/users`, {
+        const response = await axios.post(`${import.meta.env.VITE_API}/users`, {
           name: inputs.name,
           email: inputs.email,
           password: inputs.password,
         });
-        navigate(`/`);
+        if (response.status === 201) navigate(`/`);
       } catch (error) {
-        console.error(error);
+        sethasEmail("block");
       }
     } else {
-      sethasEmail("block");
     }
   }
 

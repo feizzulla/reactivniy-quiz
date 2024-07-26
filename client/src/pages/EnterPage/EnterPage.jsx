@@ -20,8 +20,6 @@ export default function EnterPage() {
     getUsers().then((data) => setUsers(data));
   }, []);
 
-  // console.log(users);
-
   const initialState = { password: "", email: "" };
   const [inputs, setInputs] = useState(initialState);
 
@@ -40,14 +38,13 @@ export default function EnterPage() {
     let pass = "";
     let userID = "";
     users.forEach((el) => {
-      user.push(el.name);
+      user.push(el.email);
     });
 
     if (user.includes(inputs.email)) {
       setOkuser("none");
-      pass = users.filter((el) => el.name === inputs.email);
-      userID = users.filter((el) => el.name === inputs.email);
-      // console.log(pass);
+      pass = users.filter((el) => el.email === inputs.email);
+      userID = users.filter((el) => el.email === inputs.email);
     } else {
       setOkuser("block");
     }
@@ -64,10 +61,20 @@ export default function EnterPage() {
     <div className={styles.container}>
       <form onSubmit={submitHandler}>
         Введи почту:
-        <input name="email" autoComplete="off" value={inputs.email} onChange={changeHandler} />
+        <input
+          name="email"
+          autoComplete="off"
+          value={inputs.email}
+          onChange={changeHandler}
+        />
         <p style={{ display: okuser }}>такого пользователя нет</p>
         Введи пароль:
-        <input name="password" autoComplete="off" value={inputs.password} onChange={changeHandler} />
+        <input
+          name="password"
+          autoComplete="off"
+          value={inputs.password}
+          onChange={changeHandler}
+        />
         <p style={{ display: okpass }}>неверный пароль</p>
         <Button type={"submit"} text={"войти"} />
         <Link to={`/register`}>
