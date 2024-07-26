@@ -60,7 +60,10 @@ export default function RegisterPage() {
           email: inputs.email,
           password: inputs.password,
         });
-        if (response.status === 201) navigate(`/`);
+        if (response.status === 201) {
+          localStorage.id = response.data.id;
+          navigate(`/`);
+        }
       } catch (error) {
         sethasEmail("block");
       }

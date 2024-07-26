@@ -13,7 +13,6 @@ import axios from "axios";
 
 export default function CardTheme({ el, newQuestion }) {
   let answer = el.answer;
-  
 
   const [response, setResponse] = useState();
 
@@ -22,7 +21,11 @@ export default function CardTheme({ el, newQuestion }) {
 
     if (event.target.children[1].children.newAnswer.value === answer) {
       setResponse("green");
-    } else setResponse("red");
+      localStorage.answer += 1;
+    } else {
+      setResponse("red");
+      localStorage.wronganswer += 1;
+    }
   };
   //   const submitHandler = async (event) => {
   //     event.preventDefault();
@@ -63,16 +66,24 @@ export default function CardTheme({ el, newQuestion }) {
   return (
     <div className={styles.container}>
       <div>
-        <img style={{ weidth: "400px", height: "400px" }} src={el.imageurl} alt={el.theme} />
+        <img
+          style={{ weidth: "400px", height: "400px" }}
+          src={el.imageurl}
+          alt={el.theme}
+        />
       </div>
       <form onSubmit={submitHandler}>
         <div>{el.question}</div>
-        <div className={'answerto'}>
-        <input name="newAnswer" autoComplete="off"></input>
-        <Button type={"submit"} color={response} text={"ответить"} onClick={newQuestion} />
+        <div className={"answerto"}>
+          <input name="newAnswer" autoComplete="off"></input>
+          <Button
+            type={"submit"}
+            color={response}
+            text={"ответить"}
+            onClick={newQuestion}
+          />
         </div>
       </form>
-      
     </div>
   );
 }

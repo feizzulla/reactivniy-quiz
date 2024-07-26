@@ -29,21 +29,37 @@ router
     }
   });
 
-router
-  .route("/:id")
+router.route("/:id").get(async (req, res) => {
+  const { id: userId } = req.params;
+  try {
+    const userStatistic = await Statistic.findAll({
+      where: { userId },
+      attributes: { exclude: ["createdAt", "updatedAt"] },
+    });
+    res.status(200).json(userStatistic);
+  } catch (error) {
+    console.log(`${error}`);
+    res.status(400).json(error);
+  }
+});
 
-  .get(async (req, res) => {
-    const { id: userId } = req.params;
-    try {
-      const userStatistic = await Statistic.findAll({
-        where: { userId },
-        attributes: { exclude: ["createdAt", "updatedAt"] },
-      });
-      res.status(200).json(userStatistic);
-    } catch (error) {
-      console.log(`${error}`);
-      res.status(400).json(error);
-    }
-  });
+// router.route("/:id").patch(async (req, res) => {
+//   const { id: userId } = req.params;
+//   const { answer, wronganswer } = req.body;
+//   try {
+//     const result = await User.findOne({
+//       where: {
+//         userId,
+//       },
+//     });
+//     console.log(result);
+//     // if (!userId) {
+//     //   await result.userStat.patch({ answer, wronganswer });
+//     //   res.sendStatus(201);
+//     // } else res.sendStatus(400);
+//   } catch (error) {
+//     res.status(400).json({ result: false, error: error });
+//   }
+// });
 
 module.exports = router;

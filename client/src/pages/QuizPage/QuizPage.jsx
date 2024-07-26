@@ -8,7 +8,8 @@ import axios from "axios";
 
 export default function QuizPage() {
   const params = useParams();
-
+  localStorage.answer = 0;
+  localStorage.wronganswer = 0;
   const [index, setIndex] = useState(1);
 
   function newQuestionHandler() {
@@ -20,7 +21,9 @@ export default function QuizPage() {
   const [quests, setQuests] = useState([]);
 
   const getQuestion = async () => {
-    const response = await axios.get(`${import.meta.env.VITE_API}/questions/${params.id}`);
+    const response = await axios.get(
+      `${import.meta.env.VITE_API}/questions/${params.id}`
+    );
     response.data.map((el, i) => (el.id = i + 1));
     return response.data;
   };
@@ -36,7 +39,11 @@ export default function QuizPage() {
       <div className="quizPage">
         <div className="quiz">
           Выбери тему:
-          <CardQuiz key={index} el={quests.filter((el) => el.id === index)[0]} newQuestion={() => newQuestionHandler()} />
+          <CardQuiz
+            key={index}
+            el={quests.filter((el) => el.id === index)[0]}
+            newQuestion={() => newQuestionHandler()}
+          />
         </div>
       </div>
     );
