@@ -19,19 +19,13 @@ module.exports = {
         },
         {
           theme: "Шлакоблокунь",
-          imageurl: "/images/math.jpeg",
+          imageurl: "../../../public/theme/th3.jpg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           theme: "Герои фильмов и мультфильмов",
-          imageurl: "/images/movies.jpeg",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          theme: "Космос",
-          imageurl: "/images/space.jpeg",
+          imageurl: "../../../public/theme/th4.jpg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

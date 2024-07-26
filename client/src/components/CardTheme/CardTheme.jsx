@@ -9,7 +9,7 @@ export default function CardTheme({ el }) {
   return (
     <div>
       <div>
-        <img style={{ weidth: "60px", height: "60px" }} src={el.imageURL} alt={el.theme} />
+        <img style={{ weidth: "60px", height: "60px" }} src={el.imageurl} alt={el.theme} />
       </div>
       <form>
         <div>{el.theme}</div>
