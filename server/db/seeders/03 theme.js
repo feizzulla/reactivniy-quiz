@@ -7,31 +7,25 @@ module.exports = {
       [
         {
           theme: "Животные",
-          imageurl: "/images/animal.jpeg",
+          imageurl: "../../../public/theme/th1.jpg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          theme: "Программирование",
-          imageurl: "/images/code.jpeg",
+          theme: "Программирование (JS)",
+          imageurl: "../../../public/theme/th2.jpg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          theme: "Математика",
-          imageurl: "/images/math.jpeg",
+          theme: "Шлакоблокунь",
+          imageurl: "../../../public/theme/th3.jpg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
-          theme: "Фильмы",
-          imageurl: "/images/movies.jpeg",
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          theme: "Космос",
-          imageurl: "/images/space.jpeg",
+          theme: "Герои фильмов и мультфильмов",
+          imageurl: "../../../public/theme/th4.jpg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
