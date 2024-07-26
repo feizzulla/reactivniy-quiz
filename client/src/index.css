@@ -66,3 +66,45 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+
+:root{
+  width: 800px;
+  margin: 0 auto;
+  border: dashed rgb(113, 113, 113);
+  padding: 20px;
+  border-radius: 3rem;
+}
+
+.mainPage{
+  margin-top: 20px;
+}
+
+.mainPage h2 {
+  text-align: center;
+}
+
+.theme{
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.cardTheme{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px dashed rgb(73, 73, 73);
+  border-radius: 2rem;
+  padding: 15px;
+}
+
+.cardTheme form{
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.cardText{
+margin: 10px 0;
+  }

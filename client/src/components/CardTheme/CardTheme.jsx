@@ -7,15 +7,17 @@ export default function CardTheme({ el }) {
   };
 
   return (
-    <div>
+    <div className="cardTheme">
       <div>
-        <img style={{ weidth: "60px", height: "60px" }} src={el.imageurl} alt={el.theme} />
+        <img style={{ weidth: "180px", height: "180px" }} src={el.imageurl} alt={el.theme} />
       </div>
       <form>
-        <div>{el.theme}</div>
+        <div className="cardText">{el.theme}</div>
+        <div className="cardButton">
         <Link to={`/quiz/${el.id}`}>
           <Button text={"Выбрать"} onClick={() => choice(el.theme)} />
         </Link>
+        </div>
       </form>
     </div>
   );

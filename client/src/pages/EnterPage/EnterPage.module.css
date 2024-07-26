@@ -1,0 +1,21 @@
+.container{
+    margin-top: 20px;
+}
+
+form{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-content: center;
+}
+
+form input{
+    margin: 0 auto;
+    width: 200px;
+}
+
+form p{
+    color: brown;
+    font-size: 30px;
+    font-weight: 700;
+}

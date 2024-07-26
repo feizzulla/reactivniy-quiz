@@ -70,7 +70,6 @@ export default function RegisterPage() {
         Введи пароль:
         <input name="password" autoComplete="off" value={inputs.password} onChange={changeHandler} />
         <p style={{ display: okpass }}>плохой пароль</p>
-        <Button type={"submit"} text={"войти"} />
         <Link to={`/register`}>
           <Button text={"регистрация"} />
         </Link>

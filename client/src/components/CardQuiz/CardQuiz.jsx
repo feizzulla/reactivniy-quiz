@@ -1,5 +1,6 @@
 import Button from "../Button/Button";
 import { useState } from "react";
+import styles from "./CardQuiz.module.css";
 import axios from "axios";
 
 // /api/checkanswer
@@ -12,12 +13,14 @@ import axios from "axios";
 
 export default function CardTheme({ el, newQuestion }) {
   let answer = el.answer;
+  
 
   const [response, setResponse] = useState();
 
   const submitHandler = (event) => {
     event.preventDefault();
-    if (event.target.childNodes[1].value === answer) {
+
+    if (event.target.children[1].children.newAnswer.value === answer) {
       setResponse("green");
     } else setResponse("red");
   };
@@ -44,15 +47,18 @@ export default function CardTheme({ el, newQuestion }) {
   // };
 
   return (
-    <div>
+    <div className={styles.container}>
       <div>
-        <img style={{ weidth: "60px", height: "60px" }} src={el.imageurl} alt={el.theme} />
+        <img style={{ weidth: "400px", height: "400px" }} src={el.imageurl} alt={el.theme} />
       </div>
       <form onSubmit={submitHandler}>
         <div>{el.question}</div>
+        <div className={'answerto'}>
         <input name="newAnswer" autoComplete="off"></input>
         <Button type={"submit"} color={response} text={"ответить"} onClick={newQuestion} />
+        </div>
       </form>
+      
     </div>
   );
 }

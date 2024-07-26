@@ -16,8 +16,8 @@ export default function MainPage() {
 
   return (
     <div className="mainPage">
+        <h2>Выбери тему:</h2>
       <div className="theme">
-        Выбери тему:
         {themes?.map((el, index) => (
           <CardTheme key={index} el={el} />
         ))}

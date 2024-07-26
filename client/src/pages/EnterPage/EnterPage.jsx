@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Button from "../../components/Button/Button";
 import { Link, useNavigate, useNavigation } from "react-router-dom";
+import styles from "./EnterPage.module.css";
 
 export default function EnterPage() {
   const [users, setUsers] = useState([]);
@@ -60,14 +61,14 @@ export default function EnterPage() {
   }
 
   return (
-    <div>
+    <div className={styles.container}>
       <form onSubmit={submitHandler}>
         Введи почту:
         <input name="email" autoComplete="off" value={inputs.email} onChange={changeHandler} />
-        <p style={{ display: okuser }}>Такого пользователя нет</p>
+        <p style={{ display: okuser }}>такого пользователя нет</p>
         Введи пароль:
         <input name="password" autoComplete="off" value={inputs.password} onChange={changeHandler} />
-        <p style={{ display: okpass }}>Неверный пароль</p>
+        <p style={{ display: okpass }}>неверный пароль</p>
         <Button type={"submit"} text={"войти"} />
         <Link to={`/register`}>
           <Button text={"регистрация"} />
