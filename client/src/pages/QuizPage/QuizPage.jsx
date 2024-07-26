@@ -9,7 +9,7 @@ import axios from "axios";
 export default function QuizPage() {
   const params = useParams();
   // const quiz = tempFile;
-  console.log(params);
+  // console.log(params);
 
   const [index, setIndex] = useState(1);
 
@@ -20,26 +20,28 @@ export default function QuizPage() {
   }
 
   //!сделать запросы с сервера
-  const [quiz, setquiz] = useState([]);
+  const [quests, setQuests] = useState([]);
 
-  const getTheme = async () => {
-    const response = await axios.get(`${import.meta.env.VITE_API}/theme`);
-    return response.data;
+  const getQuestion = async () => {
+    const response = await axios.get(`${import.meta.env.VITE_API}/questions/${params.id}`);
+    console.log(response);
+    return response;
   };
 
   useEffect(() => {
-    getTheme().then((data) => setThemes(data));
+    getQuestion().then((data) => setQuests(data));
+    // console.log(quests);
   }, []);
 
 //!вот до сюда не рабочий код
 
 
-  if (index <= quiz.length) {
+  if (index <= quests.length) {
     return (
       <div className="quizPage">
         <div className="quiz">
           Выбери тему:
-          <CardQuiz key={index} el={quiz.filter((el) => el.id === `${index}`)[0]} newQuestion={() => newQuestionHandler()} />
+          <CardQuiz key={index} el={quests.filter((el) => el.id === `${index}`)[0]} newQuestion={() => newQuestionHandler()} />
         </div>
       </div>
     );
