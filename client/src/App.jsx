@@ -15,6 +15,10 @@ function App() {
       element: <Root />,
       children: [
         {
+          path: "/:id",
+          element: <MainPage />,
+        },
+        {
           path: "/",
           element: <MainPage />,
         },
