@@ -21,20 +21,20 @@ export default function CardTheme({ el, newQuestion }) {
       setResponse("green");
     } else setResponse("red");
   };
-//   const submitHandler = async (event) => {
-//     event.preventDefault();
-//     const isCorrect = await axios.post(`${import.meta.env.VITE_API}/checkanswer`, 
-// {
-// "question": "Любой вопрос",
-// "userAnswer": "Любой ответ пользователя, в числах или строкой.",
-// "correctAnswer": "Правильный ответ. Формировать ответ лучше текстом на русском языке."
-// }
+  //   const submitHandler = async (event) => {
+  //     event.preventDefault();
+  //     const isCorrect = await axios.post(`${import.meta.env.VITE_API}/checkanswer`,
+  // {
+  // "question": "Любой вопрос",
+  // "userAnswer": "Любой ответ пользователя, в числах или строкой.",
+  // "correctAnswer": "Правильный ответ. Формировать ответ лучше текстом на русском языке."
+  // }
 
-// {
-// "question": `${el.question}`,
-// "userAnswer": `${event.target.childNodes[1].value}`,
-// "correctAnswer": `${el.answer}`
-// }
+  // {
+  // "question": `${el.question}`,
+  // "userAnswer": `${event.target.childNodes[1].value}`,
+  // "correctAnswer": `${el.answer}`
+  // }
 
   //   );
   //   console.log(isCorrect);

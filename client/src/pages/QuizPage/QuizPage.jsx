@@ -21,6 +21,7 @@ export default function QuizPage() {
 
   const getQuestion = async () => {
     const response = await axios.get(`${import.meta.env.VITE_API}/questions/${params.id}`);
+    response.data.map((el, i) => (el.id = i + 1));
     return response.data;
   };
 
